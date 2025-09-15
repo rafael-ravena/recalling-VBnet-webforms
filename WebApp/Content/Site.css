@@ -1,0 +1,35 @@
+﻿.body-content {
+    bottom: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .body-content {
+        padding: 0;
+    }
+
+    .navbar-expand-sm .navbar-nav {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .navbar-expand-sm .navbar-nav .nav-link:hover {
+            font-size: 1.4em;
+        }
+
+    .card-image {
+        max-height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+        
+    .card-image img {
+        width: 100%;
+        height: auto;
+    }
+}
