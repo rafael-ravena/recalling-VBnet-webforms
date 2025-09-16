@@ -9,6 +9,7 @@ Public Class Literals
     End Sub
 
     Protected Sub ConvertAmount(sender As Object, e As EventArgs) Handles BtnConvert.Click
+        PnlError.Visible = False
         If Not IsNumeric(TxtAmount.Text) Then
             LblResult.Text = "Please enter a valid number."
             Return

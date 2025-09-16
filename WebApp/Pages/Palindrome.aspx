@@ -46,13 +46,13 @@
                 </div>
                 <hr />
                 <p íd="LblResult" class="text-info" data-behavior="display-result"></p>
+                 <asp:Panel ID="PnlError" runat="server" CssClass="row" Visible="false">
+                     <div class="col">
+                         <h3><i class="fa-solid fa-face-frown-open"></i>Something went wrong! Hope we didn't lose all your money.</h3>
+                         <p><asp:Label ID="LblErrorTrace" runat="server"></asp:Label></p>
+                     </div>
+                 </asp:Panel>
             </div>
         </div>
-        <asp:Panel ID="PnlError" runat="server" CssClass="row" Visible="false">
-            <div class="col">
-                <h3><i class="fa-solid fa-face-frown-open"></i>Something went wrong! Hope we didn't lose all your money.</h3>
-                <p><asp:Label ID="LblErrorTrace" runat="server"></asp:Label></p>
-            </div>
-        </asp:Panel>
     </div>
 </asp:Content>

@@ -142,7 +142,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\bus.jpeg" />
+    <Content Include="Content\Images\number-text-cover.jpeg" />
+    <Content Include="Content\Images\palindrome-cover.jpeg" />
     <Content Include="Content\Images\pg-bnk.jpg" />
+    <Content Include="Content\Images\spiral-cover.jpeg" />
     <Content Include="Content\Images\spiral.jpg" />
     <Content Include="Content\Images\taco-cat.jpeg" />
     <Content Include="Content\Site.css" />

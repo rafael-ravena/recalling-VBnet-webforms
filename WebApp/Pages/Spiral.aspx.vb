@@ -3,6 +3,16 @@
 Public Class Spiral
     Inherits System.Web.UI.Page
 
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+        If Not IsPostBack Then
+            ' Populate the DropDownList with SpiralDirection values
+            Dim directions = [Enum].GetValues(GetType(SpiralBuilder.SpiralDirection))
+            For Each direction As SpiralBuilder.SpiralDirection In directions
+                SelDirection.Items.Add(New ListItem(direction.ToString(), CInt(direction)))
+            Next
+        End If
+    End Sub
+
     Protected Sub Generate(sender As Object, e As EventArgs) Handles BtnGenerate.Click
         Dim spiral As New SpiralBuilder
         If Not IsNumeric(TxtSize.Text) Then
@@ -19,26 +29,31 @@ Public Class Spiral
         End If
         Try
             Dim size As Integer = Convert.ToInt32(TxtSize.Text)
-            Dim matrix As Dictionary(Of Integer, Dictionary(Of Integer, Integer)) = Spiral.GetSpiralMatrix(size, 1)
+            Dim matrix As Dictionary(Of String, Integer) = spiral.GetSpiralMatrix(size, CType(SelDirection.SelectedValue, SpiralBuilder.SpiralDirection))
 
             Dim sb As New StringBuilder
-            sb.Append("<table class=""table table-dark table-bordered"">")
-            For Each row In matrix
-                sb.Append("<tr>")
-                For Each col In row.Value
-                    If col.Value < 0 Then
-                        sb.Append($"<td> &nbsp; </td>")
-                    Else
-                        sb.Append($"<td> {col.Value} </td>")
-                    End If
-                Next
-                sb.Append("</tr>")
+            sb.Append("<table class=""table"">")
+            Dim tuple = spiral.GetTupleFromSpiralKey(matrix.Keys(0))
+            sb.Append("<tr>")
+            For Each item In matrix
+                Dim currentTuple = spiral.GetTupleFromSpiralKey(item.Key)
+                If currentTuple.Item1 <> tuple.Item1 Then
+                    sb.Append("</tr><tr>")
+                    tuple = currentTuple
+                End If
+                sb.Append($"<td title=""{item.Key}"">")
+                If item.Value = -1 Then
+                    sb.Append("&nbsp;")
+                Else
+                    sb.Append(item.Value)
+                End If
+                sb.Append("</td>")
             Next
-            sb.Append("</table>")
+            sb.Append("</tr></table>")
 
             LblResult.Text = sb.ToString()
         Catch ex As Exception
-            LblResult.Text = "<h4 class=""text-danger"">We are sorry, but something went wrong while creating the snake.<br />Please check your inputs to see if there's no rattel around. Snakes hate them!</h4>"
+            LblResult.Text = "<h4 Class= ""text-danger"">We are sorry, but something went wrong While creating the snake.<br />Please check your inputs To see If there's no rattel around. Snakes hate them!</h4>"
         End Try
 
     End Sub

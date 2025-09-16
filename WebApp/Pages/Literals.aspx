@@ -26,14 +26,14 @@
                     <asp:Button ID="BtnConvert" runat="server" CssClass="btn btn-outline-secondary" Text="Convert" OnClick="ConvertAmount" />
                 </div>
                 <hr />
-                <asp:Label ID="LblResult" runat="server" CssClass="text-info" Text=""></asp:Label>
+                <p class="text-primary fs-2"><asp:Label ID="LblResult" runat="server" Text=""></asp:Label></p>
+                <asp:Panel ID="PnlError" runat="server" CssClass="row" Visible="false">
+                    <div class="col">
+                        <h3><i class="fa-solid fa-face-frown-open"></i>Something went wrong! Hope we didn't lose all your money.</h3>
+                        <p><asp:Label ID="LblErrorTrace" runat="server"></asp:Label></p>
+                    </div>
+                </asp:Panel>
             </div>
         </div>
-        <asp:Panel ID="PnlError" runat="server" CssClass="row" Visible="false">
-            <div class="col">
-                <h3><i class="fa-solid fa-face-frown-open"></i>Something went wrong! Hope we didn't lose all your money.</h3>
-                <p><asp:Label ID="LblErrorTrace" runat="server"></asp:Label></p>
-            </div>
-        </asp:Panel>
     </div>
 </asp:Content>

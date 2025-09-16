@@ -1,65 +1,94 @@
 ﻿Public Class SpiralBuilder
-    Public ReadOnly Property MaxSupportedSize As Integer = 324
+    Public ReadOnly Property MaxSupportedSize As Integer = (20 * 20) - 1
     Public ReadOnly Property MinSupportedSize As Integer = 1
-    Public Function GetSpiralMatrix(number As Integer, direction As Direction) As Dictionary(Of Integer, Dictionary(Of Integer, Integer))
+    Private Property Spiral As New Dictionary(Of String, Integer)()
 
-        Dim spiral As New Dictionary(Of Integer, Dictionary(Of Integer, Integer))()
+    Public Function GetSpiralMatrix(number As Integer, direction As SpiralDirection) As Dictionary(Of String, Integer)
 
-        Dim directions As (Integer, Integer)() = {(-1, 0), (0, 1), (1, 0), (0, -1)} ' up, right, down, left just like th CSS convention
-        Dim directionIndex As Integer = CInt(direction) ' we'll start with up
-        directionIndex = 0 'I can't get to make it work starting from other direction than up
+        Dim maxValue As Integer = GetMaxValue(number)
 
-        Dim size As Integer = Math.Ceiling(Math.Sqrt(number + 1)) 'shoot! we have to increase the size of the matrix for when it is equal to a perfect square
-        Dim limitNumber As Integer = size * size
-
-        Dim currentXPosition As Integer = size \ 2
-        Dim currentYPosition As Integer = size \ 2
-
-        Dim currentNumber As Integer = 0
-
-        Dim turns As Integer = 0
-        Dim stepsBeforeNextTurn As Integer = 1
-        Dim currentSteps = 0
-
-        While currentNumber <= limitNumber
-            If currentNumber >= limitNumber AndAlso currentNumber > number Then Exit While
-
-            If Not spiral.ContainsKey(currentXPosition) Then
-                spiral(currentXPosition) = New Dictionary(Of Integer, Integer)()
-            End If
-
-            If currentNumber > number Then
-                spiral(currentXPosition)(currentYPosition) = -1
-            Else
-                spiral(currentXPosition)(currentYPosition) = currentNumber
-            End If
-            currentNumber += 1
-
-            currentXPosition += directions(directionIndex).Item1
-            currentYPosition += directions(directionIndex).Item2
-
-            currentSteps += 1
-
-            If currentSteps = stepsBeforeNextTurn Then
-                currentSteps = 0
-                directionIndex = (directionIndex + 1) Mod directions.Length
-
-                If directionIndex = 0 OrElse directionIndex = 2 Then
-                    stepsBeforeNextTurn += 1
-                End If
-            End If
-
-        End While
-
-        Return spiral.
-            OrderBy(Function(x) x.Key).
-               ToDictionary(Function(x) x.Key,
-                            Function(x) x.Value.OrderBy(Function(y) y.Key).
-                                               ToDictionary(Function(y) y.Key, Function(y) y.Value))
-
+        Dim currentValue As Integer = 0
+        Dim currentDirection As SpiralDirection = direction
+        Dim currentX As Integer = 0
+        Dim currentY As Integer = 0
+        Dim isSecondTurn As Boolean = False
+        Dim stepSize As Integer = 1
+        ApplyNumberToMatrixPosition(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+        Return SortSpiralDictionary()
     End Function
 
-    Public Enum Direction
+    Public Function GetTupleFromSpiralKey(key As String) As (Integer, Integer)
+        Dim parts = key.Split(","c)
+        Dim y = Integer.Parse(parts(0))
+        Dim x = Integer.Parse(parts(1))
+        Return (y, x)
+    End Function
+
+    Private Function GetMaxValue(number As Integer) As Integer
+        Dim size As Integer = Math.Ceiling(Math.Sqrt(number + 1))
+        Return size * size
+    End Function
+
+    Private Function SortSpiralDictionary() As Dictionary(Of String, Integer)
+        Return Spiral.OrderBy(Function(kvp) GetTupleFromSpiralKey(kvp.Key)).ToDictionary(Function(kvp) kvp.Key, Function(kvp) kvp.Value)
+    End Function
+
+    Private Sub ApplyNumberToMatrixPosition(number As Integer, maxValue As Integer, currentValue As Integer, currentX As Integer, currentY As Integer, currentDirection As SpiralDirection, stepSize As Integer, isSecondTurn As Boolean)
+        If currentValue > maxValue Then
+            Return
+        End If
+        For i = 1 To stepSize
+            FillDictionary(currentX, currentY, currentValue, number)
+            currentY = SetCurrentY(currentY, currentDirection)
+            currentX = SetCurrentX(currentX, currentDirection)
+            currentValue += 1
+        Next
+        currentDirection = GetNewDirection(currentDirection)
+        stepSize += IncreaseStepSizeIfNeeded(isSecondTurn)
+        isSecondTurn = Not isSecondTurn
+        ApplyNumberToMatrixPosition(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+    End Sub
+
+    Private Function GetNewDirection(currentDirection As SpiralDirection) As SpiralDirection
+        Return CType((CInt(currentDirection) + 1) Mod 4, SpiralDirection)
+    End Function
+
+    Private Function IncreaseStepSizeIfNeeded(isSecondTurn As Boolean) As Integer
+        If isSecondTurn Then
+            Return 1
+        End If
+        Return 0
+    End Function
+
+    Private Sub FillDictionary(currentX As Integer, currentY As Integer, currentValue As Integer, number As Integer)
+        Dim key As String = $"{currentY},{currentX}"
+        Spiral(key) = currentValue
+        If currentValue > number Then
+            Spiral(key) = -1
+        End If
+    End Sub
+
+    Private Function SetCurrentY(currentY As Integer, direction As SpiralDirection) As Integer
+        If direction = SpiralDirection.Up Then
+            Return currentY - 1
+        End If
+        If direction = SpiralDirection.Down Then
+            Return currentY + 1
+        End If
+        Return currentY
+    End Function
+
+    Private Function SetCurrentX(currentX As Integer, direction As SpiralDirection) As Integer
+        If direction = SpiralDirection.Left Then
+            Return currentX - 1
+        End If
+        If direction = SpiralDirection.Right Then
+            Return currentX + 1
+        End If
+        Return currentX
+    End Function
+
+    Public Enum SpiralDirection
         Up = 0
         Right = 1
         Down = 2
