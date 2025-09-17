@@ -67,7 +67,7 @@ cd recalling-VBnet-webforms
   - External resources are used to map numbers to their literal equivalents
     - Creates an oportunity to internationalize and localize literal languages. 
     - Unless it's Latin, French or Danish... then we'd be doomed.
-- **Page**: [`~/WebApp/Pages/Literals.aspx`](./Pages/Literals.aspx)
+- **Page**: [`~/WebApp/Pages/Literals.aspx`](./WebApp/Pages/Literals.aspx)
 
 ---
 
@@ -95,7 +95,7 @@ cd recalling-VBnet-webforms
     - The backend uses a recursive algorithm to calculate the matrix position values.
     - The matrix is sorted by its keys (row, then column) for proper rendering.
     - Just to show off, user can specify the spiral initial direction (e.g., Up, Right, Down, Left).
-    - **Page**: [`~/WebApp/Pages/Spiral.aspx`](./Pages/Spiral.aspx)
+    - **Page**: [`~/WebApp/Pages/Spiral.aspx`](./WebApp/Pages/Spiral.aspx)
 
 ---
 
@@ -115,7 +115,7 @@ cd recalling-VBnet-webforms
 - The backend processes the string and compares characters from both ends.
 - The user can toggle whether to ignore non-numeric characters.
 - Front-end validation is implemented using exclusively jQuery.
-- **Page**: [`~/WebApp/Pages/Palindrome.aspx`](./Pages/Palindrome.aspx)
+- **Page**: [`~/WebApp/Pages/Palindrome.aspx`](./WebApp/Pages/Palindrome.aspx)
 
 <br/>
 <br/>
