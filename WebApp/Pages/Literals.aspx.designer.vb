@@ -47,7 +47,7 @@ Partial Public Class Literals
     '''Campo gerado automaticamente.
     '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
     '''</remarks>
-    Protected WithEvents LblResult As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents LblResult As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Controle PnlError.

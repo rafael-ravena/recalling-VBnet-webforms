@@ -21,7 +21,8 @@ Public Class Literals
             End If
             Dim LiteralConfig As New ConfigurationHandler(Of LiteralConfiguration)(Server.MapPath("~/literals.json"))
             Dim converter As New NumericToLiteralConverter(LiteralConfig)
-            LblResult.Text = converter.Convert(Convert.ToDecimal(TxtAmount.Text))
+            Dim value As Decimal = Convert.ToDecimal(TxtAmount.Text)
+            LblResult.Text = converter.Convert(value)
         Catch ex As Exception
             If TypeOf ex Is InvalidOperationException Then
                 LblResult.Text = ex.Message

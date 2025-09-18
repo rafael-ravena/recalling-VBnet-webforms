@@ -1,5 +1,5 @@
 # Programming Exercises WebApp
-This repository contains a collection of programming exercises implemented in **VB.NET** using **ASP.NET Web Forms** and **Jquery**. The exercises are designed to demonstrate clean code practices, componentization, recursion, and front-end integration with **Bootstrap** and **jQuery**.
+This repository contains a collection of programming exercises implemented in **VB.NET** using **ASP.NET Web Forms** and **Jquery**. The chosen exercises are 1, 3 and 6.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -13,23 +13,23 @@ This repository contains a collection of programming exercises implemented in **
 
 ## Overview
 The project is structured as an ASP.NET Web Forms application. Each exercise is implemented as a separate page in the `~/WebApp/Pages` directory.<br/>
-The exercises focus on solving specific programming challenges while adhering to code standards and leveraging modern front-end tools.
+The exercises focus on solving specific programming challenges.
 
 ---
 
 ## Technologies Used
-    - **Backend**: ASP.NET Web Forms, VB.NET
-    - **Frontend**: Bootstrap, jQuery, HTML5, CSS3
-    - **Tools**: Visual Studio
+- **Backend**: ASP.NET Web Forms, VB.NET
+- **Frontend**: Bootstrap, jQuery, HTML5, CSS3
+- **Tools**: Visual Studio
 
 ---
 
 ## How to Start and Run the Project
 
 ### Prerequisites
-    1. **Visual Studio**: Install [Visual Studio](https://visualstudio.microsoft.com/) (Community, Professional, or Enterprise edition).
-    2. **.NET Framework**: Ensure you have .NET Framework 4.8 properly installed.
-    3. **Browser**: Use any modern browser (e.g., Chrome, Edge, Firefox).
+1. **Visual Studio**: Install [Visual Studio](https://visualstudio.microsoft.com/) (Community, Professional, or Enterprise edition).
+2. **.NET Framework**: Ensure you have .NET Framework 4.8 properly installed.
+3. **Browser**: Use any modern browser (e.g., Chrome, Edge, Firefox).
 
 ---
 
@@ -62,10 +62,10 @@ cd recalling-VBnet-webforms
 - **Description**: Converts numeric amounts into their literal string representations.
 - **Example**: Convert `2523.04` to `"Two thousand five hundred twenty-three and 04/100 dollars"`.
 - **Logic**:
-  - The backend uses recursion to break down the number into its thousands multiples factor (thousands, millions, billions, etc.).
-  - Each "thousand part" block behaves the same way internally.
+  - The backend uses recursion to break down the number into its multiples of thousands (thousands, millions, billions, etc.).
+  - Each 'thousand-part' block behaves the same way semantically.
   - External resources are used to map numbers to their literal equivalents
-    - Creates an oportunity to internationalize and localize literal languages. 
+    - Creates an oportunity to implement for different languages. 
     - Unless it's Latin, French or Danish... then we'd be doomed.
 - **Page**: [`~/WebApp/Pages/Literals.aspx`](./WebApp/Pages/Literals.aspx)
 
@@ -117,22 +117,3 @@ cd recalling-VBnet-webforms
 - Front-end validation is implemented using exclusively jQuery.
 - **Page**: [`~/WebApp/Pages/Palindrome.aspx`](./WebApp/Pages/Palindrome.aspx)
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
----
-**Notes**
-The project demonstrates clean code practices, recursion, componentization, amongst other good code standards.
-The front-end uses Bootstrap for styling and jQuery for interactivity.
-The exercises are designed to be modular and reusable.
-
-There is no License for this project. You can fork it, clone it, copy it and modify it, and even download it, burn it to the ground and beat it with a stick at will.
-
-disclaimer: Technology can be divided into 2 categories based on your response when it's not working:
-
-- **the hardware**, which you slap 
-- **the software**, which you curse
-
-so it's probably a bad idea to burn this application to the ground and beat it with a stick.

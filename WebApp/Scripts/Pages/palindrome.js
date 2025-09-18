@@ -8,6 +8,11 @@
         }
         checkPalindrome();
     });
+    $(document).on("click", "[data-behavior~=\"rotate-images\"]", function () {
+        let img = $(this);
+        $("#TxtSubject").val(img.data("sentence")); 
+        checkPalindrome();
+    });
     $(document).on("click", "[data-behavior~=\"check-palindrome\"]", function () {
         checkPalindrome();
     });
@@ -56,14 +61,15 @@ function checkPalindrome() {
             isPalindrome = false;
         }
     }
-    resultElement.html(`<h3>The subject ${isPalindrome ? "is" : "is not"} a palindrome!</h3>${palindromeOutputText}`);
+    resultElement.html(`<h3>The subject is ${isPalindrome ? "" : "not"} a palindrome!</h3>${palindromeOutputText}`);
 }
 function startRotatingImages(currentIndex) {
+    const interval = parseInt($("[data-behavior~=\"set-interval\"]").data("arg")) * 1E3;
     const images = $("[data-behavior~=\"rotate-images\"]");
-    $(images).removeClass("d-none");
-    $(images[currentIndex]).addClass("d-none");
+    $(images).addClass("d-none");
+    $(images[currentIndex]).removeClass("d-none");
     currentIndex = (currentIndex + 1) % images.length;
     let imgChange = window.setTimeout(function () {
         startRotatingImages(currentIndex);
-    }, 3000); 
+    }, interval); 
 }

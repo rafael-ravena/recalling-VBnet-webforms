@@ -1,6 +1,6 @@
-﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="WebApp._Default" %>
+﻿<%@ Page Title="VB.Net Web Forms JQuery exercises" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.vb" Inherits="WebApp._Default" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="LeadContent" runat="server">
     <div class="container-fluid text-primary-emphasis bg-primary bg-gradient" style="--bs-bg-opacity: .6">
         <section class="row" aria-labelledby="exercisesTitle">
             <div class="col">
@@ -20,13 +20,11 @@
                 <div class="card h-100 image-to-bg">
                     <img src="Content/Images/number-text-cover.jpeg" class="card-img-top" alt="image of some numbers on a paper with the text form from them right next to it, reading '1435 plus 978 equals one thousand four hundred thirteen'" />
                     <div class="card-body">
-                        <h3 id="literalsExerciseTitle">Literals Exercise</h3>
+                        <h3 id="literalsExerciseTitle">Numeric Literals Exercise</h3>
                         <hr />
                         <p>This exercise focuses on converting numeric amounts into their literal string representations.</p>
                         <p>Example: Convert `2523.04` to `"Two thousand five hundred twenty-three and 04/100 dollars"`.</p>
                         <p>It executes through a backend component, writen in VB.Net, which encapsulates the functionality.</p>
-                        <hr />
-                        <p class="fw-lighter fst-italic">VB.Net, Clean Code, SOLID, Componentization, Recursion, External resources, Bootstrap, CSS</p>
                     </div>
                     <div class="card-footer"><a class="btn btn-outline-primary float-end" href="Pages/Literals.aspx">Go to Literals Exercise &raquo;</a></div>
                 </div>
@@ -41,8 +39,6 @@
                         <p>Example: Generate a spiral matrix for the number `24`.</p>
                         <p>It executes through a backend component, writen in VB.Net, which encapsulates the functionality.</p>
                         <p>It also has some front-end manipulation through JQuery, just to demonstrate ability with JQuery and JavaScript.</p>
-                        <hr />
-                        <p class="fw-lighter fst-italic">VB.Net, Clean Code, SOLID, Componentization, Recursion, Code optimization, Code readability, Bootstrap, CSS</p>
                     </div>
                     <div class="card-footer"><a class="btn btn-outline-primary float-end" href="Pages/Spiral.aspx">Go to Spiral Exercise &raquo;</a></div>
                 </div>
@@ -51,13 +47,11 @@
                 <div class="card h-100 image-to-bg">
                     <img src="Content/Images/palindrome-cover.jpeg" class="card-img-top" alt="image of some numbers on a paper with the text form from them right next to it, reading '1435 plus 978 equals one thousand four hundred thirteen'" />
                     <div class="card-body">
-                        <h3 id="spiralExerciseTitle">Palindrome Checker Exercise</h3>
+                        <h3 id="palindromeExerciseTitle">Palindrome Checker Exercise</h3>
                         <hr />
-                        <p>This exercise allows you to check if a given string is a palindrome, with options to ignore non-numeric characters.</p>
+                        <p>This exercise allows you to check if a given subject is a palindrome, with options to ignore non-numeric characters.</p>
                         <p>Example: Check if `madam` or `12321` is a palindrome.</p>
                         <p>This one is pure JQuery (and JavaScript logic) purely to demonstrate the handle uppon the language itself.</p>
-                        <hr />
-                        <p class="fw-lighter fst-italic">JQuery, Recursion, Code optimization, Code readability, Bootstrap, CSS</p>
                     </div>
                     <div class="card-footer"><a class="btn btn-outline-primary float-end" href="Pages/Palindrome.aspx">Go to Palindrome Exercise &raquo;</a></div>
                 </div>

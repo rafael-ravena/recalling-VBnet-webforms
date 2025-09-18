@@ -18,7 +18,7 @@ Public Class NumericToLiteralConverter
 
         Dim integerLiteral As String = ConvertNumericPart(integerPart).Replace("- ", "-")
         Dim decimalLiteral As String = $"{decimalPart:00}/100"
-        Return $"{integerLiteral} {configuration.Get.Separator} {decimalLiteral} {configuration.Get.Currency}"
+        Return $"{integerLiteral} {vbNewLine}{configuration.Get.Separator} {decimalLiteral} {configuration.Get.Currency}"
     End Function
 
     Private Function ConvertNumericPart(number As Long) As String
@@ -32,11 +32,11 @@ Public Class NumericToLiteralConverter
         End If
         If number >= 1000 Then
             sb.Append(ConvertNumericPart(Math.Truncate(number / 1000), ordinal + 1))
-            sb.Append($" {configuration.Get.ThousandSeparator(ordinal)}")
+            sb.AppendLine($" {configuration.Get.ThousandSeparator(ordinal)}")
             number = number - (1000 * Math.Truncate(number / 1000))
         End If
         If number >= 100 Then
-            sb.Append($" {configuration.Get.Units(Math.Truncate(number / 100))} {configuration.Get.Hundreds}")
+            sb.Append($"{configuration.Get.Units(Math.Truncate(number / 100))} {configuration.Get.Hundreds}")
             number = number - (100 * Math.Truncate(number / 100))
         End If
         If number >= 20 Then

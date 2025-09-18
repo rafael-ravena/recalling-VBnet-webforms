@@ -124,7 +124,6 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -141,8 +140,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\amore-roma.jpeg" />
     <Content Include="Content\Images\bus.jpeg" />
+    <Content Include="Content\Images\cat-car.jpeg" />
     <Content Include="Content\Images\number-text-cover.jpeg" />
+    <Content Include="Content\Images\number.jpeg" />
+    <Content Include="Content\Images\nut-tuna-can.jpeg" />
     <Content Include="Content\Images\palindrome-cover.jpeg" />
     <Content Include="Content\Images\pg-bnk.jpg" />
     <Content Include="Content\Images\spiral-cover.jpeg" />
@@ -192,7 +195,6 @@
     <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Pages\palindrome.js" />
-    <Content Include="Scripts\Pages\spiral.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -220,13 +222,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="Contact.aspx.designer.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>

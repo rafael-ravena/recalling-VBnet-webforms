@@ -1,5 +1,5 @@
 ﻿Public Class SpiralBuilder
-    Public ReadOnly Property MaxSupportedSize As Integer = (20 * 20) - 1
+    Public ReadOnly Property MaxSupportedSize As Integer = (36 * 36) - 1
     Public ReadOnly Property MinSupportedSize As Integer = 1
     Private Property Spiral As New Dictionary(Of String, Integer)()
 
@@ -13,9 +13,38 @@
         Dim currentY As Integer = 0
         Dim isSecondTurn As Boolean = False
         Dim stepSize As Integer = 1
-        ApplyNumberToMatrixPosition(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+        PrintNumberAndMove(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
         Return SortSpiralDictionary()
     End Function
+
+    Private Function GetMaxValue(number As Integer) As Integer
+        Dim size As Integer = Math.Ceiling(Math.Sqrt(number + 1))
+        Return size * size
+    End Function
+
+    Private Sub PrintNumberAndMove(number As Integer, maxValue As Integer, currentValue As Integer, currentX As Integer, currentY As Integer, currentDirection As SpiralDirection, stepSize As Integer, isSecondTurn As Boolean)
+        If currentValue > maxValue Then
+            Return
+        End If
+        For i = 1 To stepSize
+            PlaceValueIntoMatrix(currentX, currentY, currentValue, number)
+            currentY = SetCurrentY(currentY, currentDirection)
+            currentX = SetCurrentX(currentX, currentDirection)
+            currentValue += 1
+        Next
+        currentDirection = GetNewDirection(currentDirection)
+        stepSize += IncreaseStepSizeIfNeeded(isSecondTurn)
+        isSecondTurn = Not isSecondTurn
+        PrintNumberAndMove(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+    End Sub
+
+    Private Sub PlaceValueIntoMatrix(currentX As Integer, currentY As Integer, currentValue As Integer, number As Integer)
+        Dim key As String = $"{currentY},{currentX}"
+        Spiral(key) = currentValue
+        If currentValue > number Then
+            Spiral(key) = -1
+        End If
+    End Sub
 
     Public Function GetTupleFromSpiralKey(key As String) As (Integer, Integer)
         Dim parts = key.Split(","c)
@@ -24,30 +53,9 @@
         Return (y, x)
     End Function
 
-    Private Function GetMaxValue(number As Integer) As Integer
-        Dim size As Integer = Math.Ceiling(Math.Sqrt(number + 1))
-        Return size * size
-    End Function
-
     Private Function SortSpiralDictionary() As Dictionary(Of String, Integer)
         Return Spiral.OrderBy(Function(kvp) GetTupleFromSpiralKey(kvp.Key)).ToDictionary(Function(kvp) kvp.Key, Function(kvp) kvp.Value)
     End Function
-
-    Private Sub ApplyNumberToMatrixPosition(number As Integer, maxValue As Integer, currentValue As Integer, currentX As Integer, currentY As Integer, currentDirection As SpiralDirection, stepSize As Integer, isSecondTurn As Boolean)
-        If currentValue > maxValue Then
-            Return
-        End If
-        For i = 1 To stepSize
-            FillDictionary(currentX, currentY, currentValue, number)
-            currentY = SetCurrentY(currentY, currentDirection)
-            currentX = SetCurrentX(currentX, currentDirection)
-            currentValue += 1
-        Next
-        currentDirection = GetNewDirection(currentDirection)
-        stepSize += IncreaseStepSizeIfNeeded(isSecondTurn)
-        isSecondTurn = Not isSecondTurn
-        ApplyNumberToMatrixPosition(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
-    End Sub
 
     Private Function GetNewDirection(currentDirection As SpiralDirection) As SpiralDirection
         Return CType((CInt(currentDirection) + 1) Mod 4, SpiralDirection)
@@ -59,14 +67,6 @@
         End If
         Return 0
     End Function
-
-    Private Sub FillDictionary(currentX As Integer, currentY As Integer, currentValue As Integer, number As Integer)
-        Dim key As String = $"{currentY},{currentX}"
-        Spiral(key) = currentValue
-        If currentValue > number Then
-            Spiral(key) = -1
-        End If
-    End Sub
 
     Private Function SetCurrentY(currentY As Integer, direction As SpiralDirection) As Integer
         If direction = SpiralDirection.Up Then

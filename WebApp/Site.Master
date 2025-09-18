@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Meu Aplicativo ASP.NET</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -56,9 +56,27 @@
                 </div>
             </div>
         </nav>
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder id="LeadContent" runat="server"></asp:ContentPlaceHolder>
         <div class="container-fluid">
+            <div class="row">
+                <asp:ContentPlaceHolder ID="CardHeader" runat="server"></asp:ContentPlaceHolder>
+                <asp:Panel ID="LeftBlock" runat="server" CssClass="col-3">
+                    <div class="card">
+                        <div class="card-image">
+                            <asp:ContentPlaceHolder ID="CardImage" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                        <div class="card-body">
+                            <asp:ContentPlaceHolder ID="CardBody" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </asp:Panel>
+                <div class="col">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid fixed-bottom bg-white">
             <hr />
             <footer class="text-center">
                 <p>&copy; <%: DateTime.Now.Year %> - VB.Net - Asp.Net Web Forms - JQuery</p>
