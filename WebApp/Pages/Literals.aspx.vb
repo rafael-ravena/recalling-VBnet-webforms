@@ -17,7 +17,7 @@ Public Class Literals
         Try
 
             If Convert.ToDecimal(TxtAmount.Text) <= 0 Then
-                LblResult.Text = $"Please enter a non-negative, greater than zero number.{vbNewLine}Are you broke, mate?"
+                LblResult.Text = $"Please enter a non-negative, greater than zero number.{vbNewLine}No pay, no game!"
                 Return
             End If
             Dim LiteralConfig As New ConfigurationHandler(Of LiteralConfiguration)(Server.MapPath("~/literals.json"))

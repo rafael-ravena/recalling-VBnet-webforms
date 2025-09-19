@@ -54,17 +54,19 @@ function checkPalindrome() {
 }
 function BuildPalindromeResult(text) {
     let palindromeOutputText = "";
+    let inversePalindromeOutputText = "";
     let isPalindrome = true;
-    for (var i = 0; i < text.length; i++) {
+    for (var i = 0; i < Math.ceil(text.length/2); i++) {
         let currentCharacter = text[i].toLowerCase();
         let correspondingCharacter = text[text.length - 1 - i].toLowerCase();
         let areTheyDiferent = (currentCharacter !== correspondingCharacter);
         palindromeOutputText += `Is \"${currentCharacter}\" equal to \"${correspondingCharacter}\"? ${areTheyDiferent ? "<span class=\"text-danger\">Nope</span>" : "Yeah!"}<br/>\n`;
+        inversePalindromeOutputText = `Is \"${correspondingCharacter}\" equal to \"${currentCharacter}\"? ${areTheyDiferent ? "<span class=\"text-danger\">Nope</span>" : "Yeah!"}<br/>\n` + inversePalindromeOutputText;
         if (areTheyDiferent) {
             isPalindrome = false;
         }
     }
-    return `<h3>The subject is ${isPalindrome ? "" : "not"} a palindrome!</h3>${palindromeOutputText}`;
+    return `<h3>The subject is ${isPalindrome ? "" : "not"} a palindrome!</h3>${palindromeOutputText}${inversePalindromeOutputText}`;
 }
 
 function startRotatingImages(currentIndex) {

@@ -13,7 +13,7 @@
         Dim currentY As Integer = 0
         Dim isSecondTurn As Boolean = False
         Dim stepSize As Integer = 1
-        PrintNumberAndMove(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+        PerformMatrixSteps(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
         Return SortSpiralDictionary()
     End Function
 
@@ -22,7 +22,7 @@
         Return size * size
     End Function
 
-    Private Sub PrintNumberAndMove(number As Integer, maxValue As Integer, currentValue As Integer, currentX As Integer, currentY As Integer, currentDirection As SpiralDirection, stepSize As Integer, isSecondTurn As Boolean)
+    Private Sub PerformMatrixSteps(number As Integer, maxValue As Integer, currentValue As Integer, currentX As Integer, currentY As Integer, currentDirection As SpiralDirection, stepSize As Integer, isSecondTurn As Boolean)
         If currentValue > maxValue Then
             Return
         End If
@@ -35,7 +35,7 @@
         currentDirection = GetNewDirection(currentDirection)
         stepSize += IncreaseStepSizeIfNeeded(isSecondTurn)
         isSecondTurn = Not isSecondTurn
-        PrintNumberAndMove(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
+        PerformMatrixSteps(number, maxValue, currentValue, currentX, currentY, currentDirection, stepSize, isSecondTurn)
     End Sub
 
     Private Sub PlaceValueIntoMatrix(currentX As Integer, currentY As Integer, currentValue As Integer, number As Integer)

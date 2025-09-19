@@ -18,15 +18,15 @@ Public Class Spiral
         Try
             Dim spiral As New SpiralBuilder
             If Not IsNumeric(TxtSize.Text) Then
-                LblResult.Text = "<h4 class=""text-danger"">To create a snake, we need to know how many times it turns around it's own tail. Please help us know.</h4>"
+                LblResult.Text = "<h4 class=""text-danger"">To create a snake, we need to know how many times it turns around it's own tail. Please help us find out.</h4>"
                 Return
             End If
             If Decimal.Parse(TxtSize.Text) > spiral.MaxSupportedSize Then
-                LblResult.Text = $"<h4 class=""text-danger"">Please enter a number between {spiral.MinSupportedSize} and {spiral.MaxSupportedSize}. <br />We have no room for such a unorthodox snake.<br />For that, you should visit the Python page <a href=""https://www.python.org/"" target=""_blank"">here</a>.<h4>"
+                LblResult.Text = $"<h4 class=""text-danger"">Please enter a number between {spiral.MinSupportedSize} and {spiral.MaxSupportedSize}. <br />We have no room for such a unorthodox spiral.<br />For such huge performatic snake, you should visit the Python page <a href=""https://www.python.org/"" target=""_blank"">here</a>.<h4>"
                 Return
             End If
             If Decimal.Parse(TxtSize.Text) < spiral.MinSupportedSize Then
-                LblResult.Text = $"<h4 class=""text-danger"">If we would create such uncommon snake, smaller than {spiral.MinSupportedSize}, the universe would start returning to Big Bang, time would be passing backwards, and Einstein would show his tongue out, for you.<br/>He probably doesn't want to do that, does him?</h4>"
+                LblResult.Text = $"<h4 class=""text-danger"">If we would create such uncommon snake, smaller than {spiral.MinSupportedSize}, <br />it would start eating it's own tail like an ouroboros.</h4>"
                 Return
             End If
             Dim size As Integer = Integer.Parse(TxtSize.Text)

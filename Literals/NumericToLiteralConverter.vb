@@ -35,6 +35,15 @@ Public Class NumericToLiteralConverter
             sb.AppendLine($" {configuration.Get.ThousandSeparator(ordinal)}")
             number = number - (1000 * Math.Truncate(number / 1000))
         End If
+
+        sb.Append(ConvertLessThanThousands(number))
+
+        Return MakeFirstLetterUpperCase(sb.ToString().Trim())
+    End Function
+
+    Private Function ConvertLessThanThousands(number As Long) As String
+        Dim sb As New StringBuilder()
+        'actual number-to-text conversion
         If number >= 100 Then
             sb.Append($"{configuration.Get.Units(Math.Truncate(number / 100))} {configuration.Get.Hundreds}")
             number = number - (100 * Math.Truncate(number / 100))
@@ -44,8 +53,7 @@ Public Class NumericToLiteralConverter
             number = number - (10 * Math.Truncate(number / 10))
         End If
         sb.Append($" {configuration.Get.Units(number)}")
-
-        Return MakeFirstLetterUpperCase(sb.ToString().Trim())
+        Return sb.ToString()
     End Function
 
     Private Function MakeFirstLetterUpperCase(text As String) As String
