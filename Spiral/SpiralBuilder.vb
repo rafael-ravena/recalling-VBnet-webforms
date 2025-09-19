@@ -1,7 +1,10 @@
 ﻿Public Class SpiralBuilder
     Public ReadOnly Property MaxSupportedSize As Integer = (36 * 36) - 1
     Public ReadOnly Property MinSupportedSize As Integer = 1
+    Private Property CurrentColor As String = "rgb(255, 255, 255)"
     Private Property Spiral As New Dictionary(Of String, Integer)()
+
+
 
     Public Function GetSpiralMatrix(number As Integer, direction As SpiralDirection) As Dictionary(Of String, Integer)
 
@@ -39,7 +42,7 @@
     End Sub
 
     Private Sub PlaceValueIntoMatrix(currentX As Integer, currentY As Integer, currentValue As Integer, number As Integer)
-        Dim key As String = $"{currentY},{currentX}"
+        Dim key As String = $"{currentY};{currentX}"
         Spiral(key) = currentValue
         If currentValue > number Then
             Spiral(key) = -1
@@ -47,7 +50,7 @@
     End Sub
 
     Public Function GetTupleFromSpiralKey(key As String) As (Integer, Integer)
-        Dim parts = key.Split(","c)
+        Dim parts = key.Split(";"c)
         Dim y = Integer.Parse(parts(0))
         Dim x = Integer.Parse(parts(1))
         Return (y, x)

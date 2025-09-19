@@ -20,7 +20,7 @@
     </div>
     <hr />
     <p class="text-primary fs-2">
-        <asp:TextBox ID="LblResult" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4" Enabled="false"></asp:TextBox>
+        <asp:TextBox ID="LblResult" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="7" Enabled="false"></asp:TextBox>
     </p>
     <asp:Panel ID="PnlError" runat="server" CssClass="row" Visible="false">
         <div class="col">

@@ -41,15 +41,6 @@ Partial Public Class SiteMaster
     Protected WithEvents LeftBlock As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Controle CardImage.
-    '''</summary>
-    '''<remarks>
-    '''Campo gerado automaticamente.
-    '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-    '''</remarks>
-    Protected WithEvents CardImage As Global.System.Web.UI.WebControls.ContentPlaceHolder
-
-    '''<summary>
     '''Controle CardBody.
     '''</summary>
     '''<remarks>
@@ -57,6 +48,15 @@ Partial Public Class SiteMaster
     '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
     '''</remarks>
     Protected WithEvents CardBody As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+    '''<summary>
+    '''Controle CardImage.
+    '''</summary>
+    '''<remarks>
+    '''Campo gerado automaticamente.
+    '''Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+    '''</remarks>
+    Protected WithEvents CardImage As Global.System.Web.UI.WebControls.ContentPlaceHolder
 
     '''<summary>
     '''Controle MainContent.

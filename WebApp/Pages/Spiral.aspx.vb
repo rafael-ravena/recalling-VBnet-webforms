@@ -33,9 +33,10 @@ Public Class Spiral
             Dim matrix As Dictionary(Of String, Integer) = spiral.GetSpiralMatrix(size, CType(SelDirection.SelectedValue, SpiralBuilder.SpiralDirection))
 
             Dim sb As New StringBuilder
-            sb.Append("<table class=""table"">")
+            sb.Append($"<table class=""table"">")
             Dim tuple = spiral.GetTupleFromSpiralKey(matrix.Keys(0))
             sb.Append("<tr>")
+            Dim i As Integer = 0
             For Each item In matrix
                 Dim currentTuple = spiral.GetTupleFromSpiralKey(item.Key)
                 If currentTuple.Item1 <> tuple.Item1 Then
@@ -49,6 +50,7 @@ Public Class Spiral
                     sb.Append(item.Value)
                 End If
                 sb.Append("</td>")
+                i += 1
             Next
             sb.Append("</tr></table>")
 

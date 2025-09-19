@@ -38,5 +38,7 @@
         <asp:Button ID="BtnGenerate" runat="server" CssClass="btn btn-outline-secondary" Text="Generate spiral" OnClick="Generate" />
     </div>
     <hr />
-    <asp:Literal ID="LblResult" runat="server" Text=""></asp:Literal>
+    <div class="row">
+        <asp:Literal ID="LblResult" runat="server" Text=""></asp:Literal>
+    </div>
 </asp:Content>
