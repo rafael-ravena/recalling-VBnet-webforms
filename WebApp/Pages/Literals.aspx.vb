@@ -15,14 +15,15 @@ Public Class Literals
             Return
         End If
         Try
-            If Convert.ToDecimal(TxtAmount.Text) < 0 Then
-                LblResult.Text = "Please enter a non-negative number."
+
+            If Convert.ToDecimal(TxtAmount.Text) <= 0 Then
+                LblResult.Text = $"Please enter a non-negative, greater than zero number.{vbNewLine}Are you broke, mate?"
                 Return
             End If
             Dim LiteralConfig As New ConfigurationHandler(Of LiteralConfiguration)(Server.MapPath("~/literals.json"))
             Dim converter As New NumericToLiteralConverter(LiteralConfig)
             Dim value As Decimal = Convert.ToDecimal(TxtAmount.Text)
-            LblResult.Text = converter.Convert(value)
+            LblResult.Text = converter.Convert(value).Trim()
         Catch ex As Exception
             If TypeOf ex Is InvalidOperationException Then
                 LblResult.Text = ex.Message

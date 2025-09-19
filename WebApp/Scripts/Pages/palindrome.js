@@ -1,4 +1,15 @@
 ﻿$(document).ready(function () {
+    $(document).on("keyup", "[data-behavior~=\"palindrome-input\"]", function (e) {
+        if (e.key === "Enter" || e.which === 13) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+        checkPalindrome();
+    });
+    $(document).on("click", "[data-behavior~=\"check-palindrome\"]", function () {
+        checkPalindrome();
+    });
     $(document).on("change", "[data-behavior*=\"switch-non-\"]", function () {
         let checkbox = $(this);
         let targetElement = $(checkbox.data("target"));
@@ -11,17 +22,6 @@
     $(document).on("click", "[data-behavior~=\"rotate-images\"]", function () {
         let img = $(this);
         $("#TxtSubject").val(img.data("sentence")); 
-        checkPalindrome();
-    });
-    $(document).on("click", "[data-behavior~=\"check-palindrome\"]", function () {
-        checkPalindrome();
-    });
-    $(document).on("keyup", "[data-behavior~=\"palindrome-input\"]", function (e) {
-        if (e.key === "Enter" || e.which === 13) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
         checkPalindrome();
     });
     startRotatingImages(0);
@@ -50,6 +50,9 @@ function checkPalindrome() {
         text = text.replace(/[^a-zA-Z0-9]/g, '');
     }
 
+    resultElement.html(BuildPalindromeResult(text));
+}
+function BuildPalindromeResult(text) {
     let palindromeOutputText = "";
     let isPalindrome = true;
     for (var i = 0; i < text.length; i++) {
@@ -61,8 +64,9 @@ function checkPalindrome() {
             isPalindrome = false;
         }
     }
-    resultElement.html(`<h3>The subject is ${isPalindrome ? "" : "not"} a palindrome!</h3>${palindromeOutputText}`);
+    return `<h3>The subject is ${isPalindrome ? "" : "not"} a palindrome!</h3>${palindromeOutputText}`;
 }
+
 function startRotatingImages(currentIndex) {
     const interval = parseInt($("[data-behavior~=\"set-interval\"]").data("arg")) * 1E3;
     const images = $("[data-behavior~=\"rotate-images\"]");

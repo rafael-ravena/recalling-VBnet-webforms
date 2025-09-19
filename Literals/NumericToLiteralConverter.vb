@@ -45,7 +45,15 @@ Public Class NumericToLiteralConverter
         End If
         sb.Append($" {configuration.Get.Units(number)}")
 
-        Return sb.ToString()
+        Return MakeFirstLetterUpperCase(sb.ToString().Trim())
     End Function
 
+    Private Function MakeFirstLetterUpperCase(text As String) As String
+        Dim sb As New StringBuilder()
+        sb.Append(Char.ToUpper(text(0)))
+        If text.Length > 1 Then
+            sb.Append(text.Substring(1).ToLower())
+        End If
+        Return sb.ToString().Trim()
+    End Function
 End Class
