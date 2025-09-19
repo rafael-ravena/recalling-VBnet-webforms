@@ -18,6 +18,7 @@ The exercises focus on solving specific programming challenges.
 ---
 
 ## Technologies Used
+
 - **Backend**: ASP.NET Web Forms, VB.NET
 - **Frontend**: Bootstrap, jQuery, HTML5, CSS3
 - **Tools**: Visual Studio
@@ -27,6 +28,7 @@ The exercises focus on solving specific programming challenges.
 ## How to Start and Run the Project
 
 ### Prerequisites
+
 1. **Visual Studio**: Install [Visual Studio](https://visualstudio.microsoft.com/) (Community, Professional, or Enterprise edition).
 2. **.NET Framework**: Ensure you have .NET Framework 4.8 properly installed.
 3. **Browser**: Use any modern browser (e.g., Chrome, Edge, Firefox).
@@ -39,18 +41,18 @@ The exercises focus on solving specific programming challenges.
 git clone https://github.com/rafael-ravena/recalling-VBnet-webforms
 cd recalling-VBnet-webforms
 ```
-2. Open the Solution:
+2. **Open the Solution**:
     - Open WebApp.sln in Visual Studio.
-3. Restore NuGet Packages:
+3. **Restore NuGet Packages**:
     - In Visual Studio, go to Tools > NuGet Package Manager > Manage NuGet Packages for Solution.
     - Restore any missing packages.
-4. Build the Solution:
+4. **Build the Solution**:
     - Press Ctrl+Shift+B or go to Build > Build Solution.
-5. Run the Project:
+5. **Run the Project**:
     - Press F5 or click the **Start Debugging** button in Visual Studio to debug the application.
     - Press ctrl+F5 or click the **Start Without Debugging** button in Visual Studio to start the application detached from the debugger process.
     - The application will open in your default browser.
-6. Navigate to the Exercises:
+6. **Navigate to the Exercises**:
     - Literals Exercise: http://localhost:xxxx/Pages/Literals.aspx
     - Spiral Matrix Exercise: http://localhost:xxxx/Pages/Spiral.aspx
     - Palindrome Checker: http://localhost:xxxx/Pages/Palindrome.aspx
@@ -59,6 +61,7 @@ cd recalling-VBnet-webforms
 
 
 ## Literals Exercise
+
 - **Description**: Converts numeric amounts into their literal string representations.
 - **Example**: Convert `2523.04` to `"Two thousand five hundred twenty-three and 04/100 dollars"`.
 - **Logic**:
@@ -72,6 +75,7 @@ cd recalling-VBnet-webforms
 ---
 
 ## Spiral Matrix Exercise
+
 - **Description**: Generates a spiral matrix for a given number and displays it dynamically.
 - **Example**: Generating a spiral matrix for the number `24`: 
 
@@ -100,20 +104,22 @@ cd recalling-VBnet-webforms
 ---
 
 ## Palindrome Checker
+
 - **Description**: 
     > Checks if a given input *(subject)* is a palindrome, with options to ignore non-numeric characters. <br/>
     > A palindrome is a sequence of numbers, letters, or even a full sentence that, once read bakwards, equals to the original.<br/>
     > It comes from the greek word *"palindromos"* (*"palin"*: back or again; *"dromos"*: route or road)
 - **Examples**:
-- Input: `socorram-me! subi no ônibus em Marrocos` - `a famous portuguese palindrome`
-    > → Output: `True` if "remove white space and non aphanumeric characters"<br/>
-    > → Output: `false` if not "remove white space and non aphanumeric characters"
-- Input: `12321` → Output: `True`
-- Input: `hello` → Output: `False`
-- Input: `palindrome` → Output: `False`
+    - Input: `socorram-me! subi no ônibus em Marrocos` - `a famous portuguese palindrome`
+        > → Output: `True` if "remove white space and non aphanumeric characters"<br/>
+        > → Output: `false` if not "remove white space and non aphanumeric characters"
+    - Input: `12321` → Output: `True`
+    - Input: `hello` → Output: `False`
+    - Input: `palindrome` → Output: `False`
 - **Logic**:
-- The backend processes the string and compares characters from both ends.
-- The user can toggle whether to ignore non-numeric characters.
-- Front-end validation is implemented using exclusively jQuery.
+    - The backend processes the string and compares characters from both ends.
+    - The user can toggle whether to ignore non-numeric characters.
+    - Front-end validation is implemented using exclusively jQuery.
 - **Page**: [`~/WebApp/Pages/Palindrome.aspx`](./WebApp/Pages/Palindrome.aspx)
+
 
